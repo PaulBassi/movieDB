@@ -1,0 +1,46 @@
+@import 'setup.scss';
+// @import 'utils.scss';
+// @import 'typography.scss';
+// @import 'components/header.scss';
+// @import 'components/autocomplete.scss';
+// @import 'components/main.scss'
+
+
+
+#app {
+    background: url(../../assets/AdobeStock_179914171-2.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.searchResults {
+    background: black;
+    width: 60%;
+    color: white;
+    // height: 50%;
+    display: flex;
+    margin: 0 auto;
+    // visibility: hidden;
+    .resultDetails {
+        width: 70%;
+    }
+    .resultImage {
+        width: 30%;
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+}
+
+.resultContainer {
+    height: 100vh;
+
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+   ;
+}

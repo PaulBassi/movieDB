@@ -16,7 +16,8 @@ class App extends React.Component {
       apiKey: 'c46c55f29f4061c8020736981b14a86e',
       movies: [],
       yourMovie: [],
-      id: ''
+      id: '',
+      showResults: false
     
     };
     this.handleChange = this.handleChange.bind(this);
@@ -48,7 +49,9 @@ class App extends React.Component {
 
 
   handleChange(e) {
-    console.log(e.target.value);
+    // console.log(e.target.value);
+    console.log(this.state.search);
+    
     this.setState({
       search : e.target.value
     }) 
@@ -74,8 +77,11 @@ class App extends React.Component {
         const returnedData = data.data.results;
         const limitedData = returnedData[0];
         
-        this.setState({yourMovie : limitedData});
-        this.setState({id : limitedData.id});
+        this.setState({
+          yourMovie : limitedData,
+          id : limitedData.id,
+          showResults: true
+        });
         
         console.log(data);
         // console.log(returnedData);
@@ -103,24 +109,39 @@ class App extends React.Component {
 
     render() {
       return (
-        <div>
+        <div className="resultContainer" style={{ 
+          backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+          url("https://image.tmdb.org/t/p/original/${this.state.yourMovie.backdrop_path}")`
+          }}>
+
+          
           <form action="" onSubmit={this.getMovies}>
             {/* last item in value is set = to name */}
             <input type="text" name="search" onChange={this.handleChange} placeholder="Search Movie" value={this.state.search} />
             <input type="submit" />
           </form>
 
-          <p>{this.state.id}</p>
+          {this.state.showResults === true ? (
+          <div className="searchResults">
+            <div className="resultImage">
+              <img src={`https://image.tmdb.org/t/p/w500/${this.state.yourMovie.poster_path}`} alt=""/>
+            </div>
+
+            <div className="resultDetails">
+              <p>{this.state.id}</p>
+              <p className="movieTitle">{this.state.yourMovie.title}</p>
+              <p>{this.state.yourMovie.overview}</p>
+            </div>
+
+          {/* <img src={`https://image.tmdb.org/t/p/original/${this.state.yourMovie.backdrop_path}`} alt=""  /> */}
 
 
-
-          <p>{this.state.yourMovie.title}</p>
-          <p>{this.state.yourMovie.overview}</p>
-
-
-          <img src={`https://image.tmdb.org/t/p/w500/${this.state.yourMovie.poster_path}`} alt=""/>
-          <img src={`https://image.tmdb.org/t/p/original/${this.state.yourMovie.backdrop_path}`} alt="" />
           
+          </div>
+
+          ) : null}
+
+       
           
         </div>
 

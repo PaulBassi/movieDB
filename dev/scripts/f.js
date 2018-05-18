@@ -23,3 +23,32 @@ getMovies(e) {
         
       });
     }
+
+
+
+
+{
+  this.state.movies.map((movie) => {
+    console.log(movie);
+
+    return (
+      <div key={movie.id}>
+        <p>{this.limitedData.title}</p>
+      </div>
+    )
+  })
+}
+
+
+
+{
+  this.state.movies.map((movie) => {
+    console.log(movie);
+
+    return (
+      <div key={movie.id}>
+        <p>{this.limitedData.title}</p>
+      </div>
+    )
+  })
+}
