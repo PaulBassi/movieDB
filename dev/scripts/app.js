@@ -18,6 +18,7 @@ class App extends React.Component {
       yourMovie: [],
       id: '',
       cast: [],
+      movieInfo: [],
       showResults: false
     
     };
@@ -58,6 +59,8 @@ class App extends React.Component {
     }) 
   }
 
+  
+
 
 
 
@@ -85,26 +88,23 @@ class App extends React.Component {
         });
         
         console.log(data);
-        // console.log(returnedData);
-        
-        // console.log(limitedData);
-        // console.log(limitedData.id);
+      
 
         return axios.get(`https://api.themoviedb.org/3/movie/${this.state.id}/credits`, {
             params: {
               api_key: this.state.apiKey,
-              movie_id: this.state.id,
+              // movie_id: this.state.id,
             }
           })
           
           .then((creditData) => {
-            console.log(creditData);
+            // console.log(creditData);
             const returnedCast = creditData.data.cast;
             
             // console.log(returnedCast);
 
             const limitedCast = returnedCast.slice(0, 4);
-            console.log(limitedCast);
+            // console.log(limitedCast);
             
 
 
@@ -113,9 +113,26 @@ class App extends React.Component {
               
             });
             
-            
+            return axios.get(`https://api.themoviedb.org/3/movie/${this.state.id}`, {
+              params: {
+                api_key: this.state.apiKey,
+                // movie_id: this.state.id,
+              }
+            })
 
             
+            
+            .then((movieInfo) => {
+              console.log(movieInfo);
+
+              const returnedInfo = movieInfo.data;
+
+              this.setState({
+                movieInfo: returnedInfo
+              });
+
+              
+            })
             
           });
         
@@ -151,7 +168,17 @@ class App extends React.Component {
               <div className="movieDetails">
                 <div className="titleBlurb">
                   <p className="movieTitle">{this.state.yourMovie.title}</p>
+                  <p className="tagline">{this.state.movieInfo.tagline}</p>
                   <p>{this.state.yourMovie.overview}</p>
+                </div>
+
+                <div className="movieStats">
+                  <p>Rating:</p>
+                  <p>{this.state.movieInfo.vote_average}/10</p>
+                  <p>Running Time:</p>
+                  <p>{this.state.movieInfo.runtime} mins</p>
+                  
+
                 </div>
             
 
