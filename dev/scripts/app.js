@@ -17,6 +17,7 @@ class App extends React.Component {
       movies: [],
       yourMovie: [],
       id: '',
+      cast: [],
       showResults: false
     
     };
@@ -98,6 +99,24 @@ class App extends React.Component {
           
           .then((creditData) => {
             console.log(creditData);
+            const returnedCast = creditData.data.cast;
+            
+            // console.log(returnedCast);
+
+            const limitedCast = returnedCast.slice(0, 4);
+            console.log(limitedCast);
+            
+
+
+            this.setState({
+              cast: limitedCast
+              
+            });
+            
+            
+
+            
+            
           });
         
         
@@ -123,17 +142,35 @@ class App extends React.Component {
 
           {this.state.showResults === true ? (
           <div className="searchResults">
-            <div className="resultImage">
-              <img src={`https://image.tmdb.org/t/p/w500/${this.state.yourMovie.poster_path}`} alt=""/>
-            </div>
+            {/* <div className="resultsTop"> */}
 
-            <div className="resultDetails">
-              <p>{this.state.id}</p>
-              <p className="movieTitle">{this.state.yourMovie.title}</p>
-              <p>{this.state.yourMovie.overview}</p>
-            </div>
+              <div className="resultImage">
+                <img src={`https://image.tmdb.org/t/p/w500/${this.state.yourMovie.poster_path}`} alt=""/>
+              </div>
 
-          {/* <img src={`https://image.tmdb.org/t/p/original/${this.state.yourMovie.backdrop_path}`} alt=""  /> */}
+              <div className="movieDetails">
+                <div className="titleBlurb">
+                  <p className="movieTitle">{this.state.yourMovie.title}</p>
+                  <p>{this.state.yourMovie.overview}</p>
+                </div>
+            
+
+
+                <div className="cast">
+                {this.state.cast.map((actor, i) => {
+                  return(
+                    <div key={i}className="actorProfile">
+                      <img src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`} alt="" />
+                      <h4>{actor.name}</h4>
+                      <h5>{actor.character}</h5>
+                    </div>
+                  )
+                })}
+
+                </div>
+
+              </div>
+
 
 
           

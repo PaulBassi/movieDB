@@ -14,27 +14,6 @@
     background-repeat: no-repeat;
 }
 
-
-.searchResults {
-    background: black;
-    width: 60%;
-    color: white;
-    // height: 50%;
-    display: flex;
-    margin: 0 auto;
-    // visibility: hidden;
-    .resultDetails {
-        width: 70%;
-    }
-    .resultImage {
-        width: 30%;
-        img {
-            width: 100%;
-            display: block;
-        }
-    }
-}
-
 .resultContainer {
     height: 100vh;
 
@@ -42,5 +21,49 @@
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-   ;
+   
 }
+
+.searchResults {
+    // background: black;
+    width: 70%;
+    color: white;
+    // height: 70vh;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 10%;
+    // visibility: hidden;
+    .movieDetails {
+        width: 65%;
+        // opacity: 0.5;
+        background: rgba(000, 000, 000, 0.5);
+    }
+    .resultImage {
+        width: 35%;
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+}
+
+
+.cast {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .actorProfile {
+        width: 20%;
+        margin: 0 auto;
+        text-align: center;
+        img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            object-position: 50% 33%;
+            border-radius: 50%;
+        }
+    }
+}
+
+
