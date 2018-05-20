@@ -150,16 +150,28 @@ class App extends React.Component {
           url("https://image.tmdb.org/t/p/original/${this.state.yourMovie.backdrop_path}")`
           }}>
 
+          {this.state.showResults === false ? (
+          <form action="" onSubmit={this.getMovies} id="homePageForm">
+              <input type="text" name="search" id="homeSearch" onChange={this.handleChange} placeholder="Search Movie" value={this.state.search} />
+              <input type="submit" value="Search" id="homeSubmit" />
+            </form>
+          ) : null}
+            
+
+
           
-          <form action="" onSubmit={this.getMovies}>
-            {/* last item in value is set = to name */}
-            <input type="text" name="search" onChange={this.handleChange} placeholder="Search Movie" value={this.state.search} />
-            <input type="submit" />
-          </form>
 
           {this.state.showResults === true ? (
+          <div>
+          <header>
+            <img src="../../assets/logo.png" alt=""/>
+            <form action="" onSubmit={this.getMovies} id="resultPageForm">
+              {/* last item in value is set = to name */}
+              <input type="text" name="search" id="resultSearch" onChange={this.handleChange} placeholder="Search Movie" value={this.state.search} />
+              <input type="submit" value="Search" id="resultSubmit" />
+            </form>
+          </header>
           <div className="searchResults">
-            {/* <div className="resultsTop"> */}
 
               <div className="resultImage">
                 <img src={`https://image.tmdb.org/t/p/w500/${this.state.yourMovie.poster_path}`} alt=""/>
@@ -167,18 +179,26 @@ class App extends React.Component {
 
               <div className="movieDetails">
                 <div className="titleBlurb">
-                  <p className="movieTitle">{this.state.yourMovie.title}</p>
-                  <p className="tagline">{this.state.movieInfo.tagline}</p>
+                  <h2 className="movieTitle">{this.state.yourMovie.title}</h2>
+                  <h3 className="tagline">{this.state.movieInfo.tagline}</h3>
                   <p>{this.state.yourMovie.overview}</p>
                 </div>
 
                 <div className="movieStats">
-                  <p>Rating:</p>
-                  <p>{this.state.movieInfo.vote_average}/10</p>
-                  <p>Running Time:</p>
-                  <p>{this.state.movieInfo.runtime} mins</p>
-                  
+                  <div className="rating">
+                  <h6>Rating:</h6>
+                  <p>{this.state.movieInfo.vote_average} / 10</p>
+                  </div>
 
+                  <div className="runtime">
+                  <h6>Running Time:</h6>
+                  <p>{this.state.movieInfo.runtime} mins</p>
+                  </div>
+
+                  <div className="releaseDate">
+                  <h6>Release Date:</h6>
+                  <p>{this.state.movieInfo.release_date}</p>
+                  </div>
                 </div>
             
 
@@ -188,8 +208,8 @@ class App extends React.Component {
                   return(
                     <div key={i}className="actorProfile">
                       <img src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`} alt="" />
-                      <h4>{actor.name}</h4>
-                      <h5>{actor.character}</h5>
+                      <p className="actorName">{actor.name}</p>
+                      <p className="actorCharacter">{actor.character}</p>
                     </div>
                   )
                 })}
@@ -202,10 +222,13 @@ class App extends React.Component {
 
           
           </div>
+          </div>
 
           ) : null}
 
-       
+          {/* <footer>
+            <p>Made by Paul Bassi</p>
+          </footer> */}
           
         </div>
 

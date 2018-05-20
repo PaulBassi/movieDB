@@ -7,11 +7,59 @@
 
 
 
+$white: #FFFBD7;
+$red: #D31F35;
+$orange: #FBBA53;
+$yellow: #FBBA53;
+$green: #9FAD58;
+$teal: #148F88;
+$purple: #9F4566;
+
+$primaryFont: 'Six Caps', sans-serif;
+$secondaryFont: 'Montserrat', sans-serif;
+
+h2 {
+    font-family: $primaryFont;
+    font-size: 70px;
+    color: $yellow;
+    margin: 0;
+}
+
+h3 {
+    font-size: 20px;
+    color: $green;
+}
+
+
+
 #app {
-    background: url(../../assets/AdobeStock_179914171-2.png);
+    // background: linear-gradient(to bottom, rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(../../assets/AdobeStock_179914171-3.png);
+    background: url(../../assets/AdobeStock_179914171-4.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+#homePageForm {
+    text-align: center;
+    padding-top: 48%;
+    input#homeSearch {
+        border: 2px solid $yellow;
+        // border-right: none;
+        background: none;
+        color: $white;
+
+        width: 300px;
+        margin-right: 1%;
+        padding: 10px;
+        text-align: center;
+    }
+    input#homeSubmit {
+        border: 2px solid $purple;
+        background: $purple;
+        color: #FFFBD7;
+        padding: 10px 15px;
+    }
 }
 
 .resultContainer {
@@ -20,18 +68,55 @@
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-   
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    margin-bottom: 5%;
+    // height: 5%;
+    background: rgba(000, 000, 000, 0.5);
+    img {
+        width: 10%;
+        display: block;
+    }
+    
+}
+
+#resultPageForm {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    input#resultSearch {
+        border: 2px solid $yellow;
+        background: none;
+        color: $white;
+
+        width: 300px;
+        margin-right: 1%;
+        padding: 10px;
+        text-align: center;
+    }
+    input#resultSubmit {
+        border: 2px solid $purple;
+        background: $purple;
+        color: #FFFBD7;
+        padding: 10px 15px;
+    }
+}
+
+
 .searchResults {
-    width: 75%;
-    color: white;
+    width: 80%;
+    color: $white;
     display: flex;
     margin: 0 auto;
-    margin-top: 10%;
+    font-family: $secondaryFont;
     .movieDetails {
         width: 65%;
-        background: rgba(000, 000, 000, 0.5);
+        background: rgba(000, 000, 000, 0.8);
         padding: 0 2%;
     }
     .resultImage {
@@ -43,14 +128,50 @@
     }
 }
 
+.titleBlurb {
+    margin-bottom: 3%;
+    p {
+        font-size: 14px;
+    }
+}
+
+
+
+.movieStats {
+    display: flex;
+    margin-bottom: 3%;
+    h6 {
+        font-size: 16px;
+        margin: 0;
+    }
+    p {
+     color: $yellow;   
+    }
+    .rating {
+        width: 33.3%;
+        
+    }
+    .runtime {
+        width: 33.3%;
+        // text-align: center;
+    }
+    .releaseDate {
+        width: 33.3%;
+        // text-align: right;
+    }
+}
+
 
 .cast {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
     .actorProfile {
         width: 25%;
         margin: 0 auto;
+        padding: 0 1%;
         text-align: center;
         img {
             width: 100px;
@@ -58,8 +179,17 @@
             object-fit: cover;
             object-position: 50% 33%;
             border-radius: 50%;
+            // border: 2px solid white;
+        }
+        p.actorName {
+            font-size: 16px;
+            margin: 5% 0 0 0;
+        }
+        p.actorCharacter {
+            font-size: 14px;
+            margin: 2% 0 0 0;
+            color: $green;
         }
     }
 }
-
 
