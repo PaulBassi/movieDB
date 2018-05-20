@@ -18,15 +18,28 @@ $purple: #9F4566;
 $primaryFont: 'Six Caps', sans-serif;
 $secondaryFont: 'Montserrat', sans-serif;
 
+@mixin remCalc($fontSize) {
+    font-size: ($fontSize / 16) * 1rem;
+}
+
+html {
+    font-size: 100%;
+}
+
 h2 {
     font-family: $primaryFont;
-    font-size: 70px;
+    @include remCalc(60);
+    // line-height: 6rem;
+    // font-size: 70px;
+    letter-spacing: 0.2rem;
     color: $yellow;
     margin: 0;
 }
 
 h3 {
-    font-size: 20px;
+    @include remCalc(30);
+    margin: 0;
+    // font-size: 20px;
     color: $green;
 }
 
@@ -38,26 +51,30 @@ h3 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
 }
 
 #homePageForm {
     text-align: center;
-    padding-top: 48%;
+    padding-top: 47%;
+    margin-bottom: 2.5%;
     input#homeSearch {
         border: 2px solid $yellow;
         // border-right: none;
         background: none;
         color: $white;
 
-        width: 300px;
+        width: 350px;
         margin-right: 1%;
         padding: 10px;
         text-align: center;
     }
     input#homeSubmit {
-        border: 2px solid $purple;
-        background: $purple;
-        color: #FFFBD7;
+        border: 2px solid $green;
+        background: $green;
+        color: $white;
+        width: 120px;
         padding: 10px 15px;
     }
 }
@@ -74,13 +91,17 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5%;
-    margin-bottom: 5%;
+    padding: 0 10%;
+    height: 5vh;
+    // margin-bottom: 2.5%;
     // height: 5%;
     background: rgba(000, 000, 000, 0.5);
     img {
-        width: 10%;
-        display: block;
+        width: auto;
+        height: 100%;
+        // height: 100%
+        // display: block;
+        object-fit: contain;
     }
     
 }
@@ -100,30 +121,51 @@ header {
         text-align: center;
     }
     input#resultSubmit {
-        border: 2px solid $purple;
-        background: $purple;
-        color: #FFFBD7;
+        border: 2px solid $green;
+        background: $green;
+        color: $white;
+        width: 120px;
         padding: 10px 15px;
     }
+}
+
+.searchResultsContainer {
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 .searchResults {
     width: 80%;
+    min-height: 70vh;
     color: $white;
     display: flex;
+    align-items: center;
     margin: 0 auto;
     font-family: $secondaryFont;
+
     .movieDetails {
         width: 65%;
-        background: rgba(000, 000, 000, 0.8);
+        height: 80vh;
+        background: rgba(000, 000, 000, 0.5);
         padding: 0 2%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
     }
     .resultImage {
         width: 35%;
+        // object-fit: cover;
         img {
             width: 100%;
+            height: 80vh;
             display: block;
+            object-fit: cover;
+            // object-position: 50% 33%;
+            
         }
     }
 }
@@ -131,7 +173,8 @@ header {
 .titleBlurb {
     margin-bottom: 3%;
     p {
-        font-size: 14px;
+        @include remCalc(18);
+        // font-size: 14px;
     }
 }
 
@@ -139,13 +182,16 @@ header {
 
 .movieStats {
     display: flex;
-    margin-bottom: 3%;
+    margin-bottom: 2%;
     h6 {
-        font-size: 16px;
+        @include remCalc(20);
+        // font-size: 16px;
         margin: 0;
     }
     p {
-     color: $yellow;   
+        @include remCalc(18);
+        color: $yellow; 
+
     }
     .rating {
         width: 33.3%;
@@ -182,14 +228,214 @@ header {
             // border: 2px solid white;
         }
         p.actorName {
-            font-size: 16px;
+            @include remCalc(18);
+            // font-size: 16px;
             margin: 5% 0 0 0;
         }
         p.actorCharacter {
-            font-size: 14px;
+            @include remCalc(16);
+            // font-size: 14px;
             margin: 2% 0 0 0;
             color: $green;
         }
     }
 }
 
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(000, 000, 000, 0.5);
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+    padding: 0 10%;
+
+    font-family: $secondaryFont;
+    @include remCalc(18);
+    // font-size: 20px;
+    // letter-spacing: 3px;
+    p {
+        margin: 0;
+        color: $white;
+    }
+    .footerImage {
+        width: 2%;
+    }
+    img {
+        width: 100%;
+        // display: block;
+    }
+    
+}
+
+// HOME PAGE RESPONSIVE MEDIA QUERIES
+
+@media only screen and (max-width: 1450px) {
+    #homePageForm {
+        padding-top: 45%;
+        input#homeSearch {
+            width: 320px;
+        }
+    }
+
+    footer {
+        @include remCalc(16);
+    }
+}
+
+
+
+// RESULTS PAGE REPONSIVE MEDIA QUERIES
+
+@media only screen and (max-width: 1450px) {
+    h2 {
+        @include remCalc(40);
+        line-height: 5rem;
+    }
+
+    h3 {
+        @include remCalc(24);
+        margin: 0;
+    }
+
+    .titleBlurb {
+        margin-bottom: 3%;
+        p {
+            @include remCalc(16);
+        }
+    }
+
+    .movieStats {
+        margin-bottom: 5%;
+        h6 {
+            @include remCalc(18);
+            margin: 0;
+        }
+        p {
+            @include remCalc(16);
+            margin: 3% 0 0 0;
+        }
+    }
+
+    .cast {
+        .actorProfile {
+            img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                object-position: 50% 33%;
+                border-radius: 50%;
+            }
+            p.actorName {
+                @include remCalc(16);
+                margin: 1% 0 0 0;
+            }
+            p.actorCharacter {
+                @include remCalc(14);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1350px) {
+    .searchResults {
+        width: 90%;
+    }
+
+    .cast {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    h2 {
+        @include remCalc(34);
+        line-height: 3rem;
+    }
+
+    h3 {
+        @include remCalc(18);
+        margin: 0;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        height: 10vh;
+        img {
+            margin-bottom: 2%;
+        }
+    }
+
+
+    #resultPageForm {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        input#resultSearch {
+            border: 2px solid $yellow;
+            background: none;
+            color: $white;
+
+            width: 200px;
+            margin-right: 1%;
+            padding: 6px;
+            text-align: center;
+        }
+        input#resultSubmit {
+            border: 2px solid $green;
+            background: $green;
+            color: $white;
+            width: 80px;
+            padding: 6px 10px;
+        }
+    }
+
+    .searchResultsContainer {
+        height: 90vh;
+    }
+
+    .searchResults {
+        width: 80%;
+        // height: 95vh;
+        color: $white;
+        display: flex;
+        margin: 0 auto;
+        font-family: $secondaryFont;
+
+        .movieDetails {
+            width: 100%;
+            background: rgba(000, 000, 000, 0.8);
+            padding: 0 2%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .resultImage {
+            width: 35%;
+            display: none;
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+    }
+
+    .movieStats {
+        margin-bottom: 2%;
+        .rating {
+            width: 40%;
+        }
+        .runtime {
+            width: 60%;
+        }
+        .releaseDate {
+            display: none;
+        }
+    }
+
+
+}

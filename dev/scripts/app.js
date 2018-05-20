@@ -171,6 +171,7 @@ class App extends React.Component {
               <input type="submit" value="Search" id="resultSubmit" />
             </form>
           </header>
+          <div className="searchResultsContainer">
           <div className="searchResults">
 
               <div className="resultImage">
@@ -223,12 +224,18 @@ class App extends React.Component {
           
           </div>
           </div>
+          </div>
 
           ) : null}
 
-          {/* <footer>
+          {this.state.showResults === false ? (
+          <footer>
             <p>Made by Paul Bassi</p>
-          </footer> */}
+            <div className="footerImage">
+            <img src="../../assets/moviedb2.png" alt=""/>
+            </div>
+          </footer>
+          ) : null}
           
         </div>
 
