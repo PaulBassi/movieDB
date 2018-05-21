@@ -56,6 +56,10 @@ h3 {
     position: relative;
 }
 
+img.homeLogo {
+    display: none;
+}
+
 #homePageForm {
     text-align: center;
     width: 100%;
@@ -66,26 +70,26 @@ h3 {
     position: absolute;
     top: 85%;
     input#homeSearch {
-        border: 1px solid $yellow;
+        border: 3px solid $yellow;
         // border-right: none;
         background: none;
         color: $white;
 
-        width: 350px;
+        width: 380px;
         margin-right: 2%;
         // margin-top: 40%;
-        padding: 10px;
+        padding: 15px;
         text-align: center;
 
        
     }
     input#homeSubmit {
-        border: 1px solid $green;
+        border: 3px solid $green;
         background: $green;
         color: $white;
-        width: 120px;
+        width: 140px;
         // margin-top: 40%;
-        padding: 10px 15px;
+        padding: 15px 15px;
 
         
     }
@@ -289,6 +293,10 @@ footer {
         // padding-top: 45%;
         input#homeSearch {
             width: 320px;
+            padding: 10px;
+        }
+        input#homeSubmit {
+            padding: 10px;
         }
     }
 
@@ -296,6 +304,77 @@ footer {
         @include remCalc(16);
     }
 }
+
+@media only screen and (max-width: 1200px) {
+    #app {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(../../assets/background2.jpeg);
+        // background: url(../../assets/background2.jpeg);
+        // background: #414142;
+        background-size: cover;
+        background-position: center;
+    }
+
+    img.homeLogo {
+    display: block;
+    width: 30%;
+    margin: 0 auto;
+    }
+
+    #homePageForm {
+        top: 75%;
+        input#homeSearch {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            
+        }
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    #homePageForm {
+        flex-direction: column;
+        align-items: center;
+        input#homeSearch {
+            margin-bottom: 2%;
+            width: 300px;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -451,3 +530,5 @@ footer {
 
 
 }
+
+

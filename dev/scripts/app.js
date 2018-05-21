@@ -150,10 +150,14 @@ class App extends React.Component {
           url("https://image.tmdb.org/t/p/original/${this.state.yourMovie.backdrop_path}")`
           }}>
 
+
           {this.state.showResults === false ? (
-          <form action="" onSubmit={this.getMovies} id="homePageForm">
-              <input type="text" name="search" id="homeSearch" onChange={this.handleChange} placeholder="Search Movie" value={this.state.search} /><input type="submit" value="Search" id="homeSubmit" />
-            </form>
+          <div className="homePage">
+            <img src="../../assets/logo2.png" alt="" className="homeLogo" />
+            <form action="" onSubmit={this.getMovies} id="homePageForm">
+                <input type="text" name="search" id="homeSearch" onChange={this.handleChange} placeholder="Search Movie" value={this.state.search} /><input type="submit" value="Search" id="homeSubmit" />
+              </form>
+          </div>
           ) : null}
             
 
@@ -163,7 +167,7 @@ class App extends React.Component {
           {this.state.showResults === true ? (
           <div>
           <header>
-            <img src="../../assets/logo.png" alt=""/>
+            <img src="../../assets/logo2.png" alt=""/>
             <form action="" onSubmit={this.getMovies} id="resultPageForm">
               {/* last item in value is set = to name */}
               <input type="text" name="search" id="resultSearch" onChange={this.handleChange} placeholder="Search Movie" value={this.state.search} />
@@ -229,7 +233,7 @@ class App extends React.Component {
 
           {this.state.showResults === false ? (
           <footer>
-            <p>Made by Paul Bassi</p>
+            <p>Developed by Paul Bassi</p>
             <div className="footerImage">
             <img src="../../assets/moviedb2.png" alt=""/>
             </div>
