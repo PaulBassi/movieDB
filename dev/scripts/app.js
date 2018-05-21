@@ -152,8 +152,7 @@ class App extends React.Component {
 
           {this.state.showResults === false ? (
           <form action="" onSubmit={this.getMovies} id="homePageForm">
-              <input type="text" name="search" id="homeSearch" onChange={this.handleChange} placeholder="Search Movie" value={this.state.search} />
-              <input type="submit" value="Search" id="homeSubmit" />
+              <input type="text" name="search" id="homeSearch" onChange={this.handleChange} placeholder="Search Movie" value={this.state.search} /><input type="submit" value="Search" id="homeSubmit" />
             </form>
           ) : null}
             
@@ -207,7 +206,7 @@ class App extends React.Component {
                 <div className="cast">
                 {this.state.cast.map((actor, i) => {
                   return(
-                    <div key={i}className="actorProfile">
+                    <div key={i} className="actorProfile">
                       <img src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`} alt="" />
                       <p className="actorName">{actor.name}</p>
                       <p className="actorCharacter">{actor.character}</p>

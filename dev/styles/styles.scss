@@ -15,6 +15,8 @@ $green: #9FAD58;
 $teal: #148F88;
 $purple: #9F4566;
 
+
+
 $primaryFont: 'Six Caps', sans-serif;
 $secondaryFont: 'Montserrat', sans-serif;
 
@@ -31,7 +33,7 @@ h2 {
     @include remCalc(60);
     // line-height: 6rem;
     // font-size: 70px;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.3rem;
     color: $yellow;
     margin: 0;
 }
@@ -39,7 +41,6 @@ h2 {
 h3 {
     @include remCalc(30);
     margin: 0;
-    // font-size: 20px;
     color: $green;
 }
 
@@ -57,25 +58,36 @@ h3 {
 
 #homePageForm {
     text-align: center;
-    padding-top: 47%;
-    margin-bottom: 2.5%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    position: absolute;
+    top: 85%;
     input#homeSearch {
-        border: 2px solid $yellow;
+        border: 1px solid $yellow;
         // border-right: none;
         background: none;
         color: $white;
 
         width: 350px;
-        margin-right: 1%;
+        margin-right: 2%;
+        // margin-top: 40%;
         padding: 10px;
         text-align: center;
+
+       
     }
     input#homeSubmit {
-        border: 2px solid $green;
+        border: 1px solid $green;
         background: $green;
         color: $white;
         width: 120px;
+        // margin-top: 40%;
         padding: 10px 15px;
+
+        
     }
 }
 
@@ -111,21 +123,21 @@ header {
     display: flex;
     justify-content: flex-end;
     input#resultSearch {
-        border: 2px solid $yellow;
+        border: 1px solid $yellow;
         background: none;
         color: $white;
 
-        width: 300px;
+        width: 250px;
         margin-right: 1%;
-        padding: 10px;
+        padding: 5px;
         text-align: center;
     }
     input#resultSubmit {
-        border: 2px solid $green;
+        border: 1px solid $green;
         background: $green;
         color: $white;
         width: 120px;
-        padding: 10px 15px;
+        padding: 5px 15px;
     }
 }
 
@@ -225,7 +237,6 @@ header {
             object-fit: cover;
             object-position: 50% 33%;
             border-radius: 50%;
-            // border: 2px solid white;
         }
         p.actorName {
             @include remCalc(18);
@@ -249,6 +260,7 @@ footer {
     position: absolute;
     bottom: 0;
 
+    height: 4vh;
     width: 100%;
     padding: 0 10%;
 
@@ -274,7 +286,7 @@ footer {
 
 @media only screen and (max-width: 1450px) {
     #homePageForm {
-        padding-top: 45%;
+        // padding-top: 45%;
         input#homeSearch {
             width: 320px;
         }
@@ -375,7 +387,7 @@ footer {
         display: flex;
         justify-content: center;
         input#resultSearch {
-            border: 2px solid $yellow;
+            border: 1px solid $yellow;
             background: none;
             color: $white;
 
@@ -385,7 +397,7 @@ footer {
             text-align: center;
         }
         input#resultSubmit {
-            border: 2px solid $green;
+            border: 1px solid $green;
             background: $green;
             color: $white;
             width: 80px;
