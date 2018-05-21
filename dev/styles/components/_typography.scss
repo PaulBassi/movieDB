@@ -1,0 +1,34 @@
+$white: #FFFBD7;
+$red: #D31F35;
+$orange: #FBBA53;
+$yellow: #FBBA53;
+$green: #9FAD58;
+$teal: #148F88;
+$purple: #9F4566;
+
+
+
+$primaryFont: 'Six Caps', sans-serif;
+$secondaryFont: 'Montserrat', sans-serif;
+
+@mixin remCalc($fontSize) {
+    font-size: ($fontSize / 16) * 1rem;
+}
+
+html {
+    font-size: 100%;
+}
+
+h2 {
+    font-family: $primaryFont;
+    @include remCalc(60);
+    letter-spacing: 0.3rem;
+    color: $yellow;
+    margin: 0;
+}
+
+h3 {
+    @include remCalc(30);
+    margin: 0;
+    color: $green;
+}

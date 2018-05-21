@@ -2,10 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-// app.baseURL = 'https://api.themoviedb.org/3';
-// app.apiKey = 'c46c55f29f4061c8020736981b14a86e';
-
-
+// apiKey : 'c46c55f29f4061c8020736981b14a86e';
 
 
 class App extends React.Component {
@@ -23,54 +20,23 @@ class App extends React.Component {
     
     };
     this.handleChange = this.handleChange.bind(this);
-    this.getMovies = this.getMovies.bind(this);
-    // this.getCredits = this.getCredits.bind(this);
-    // console.log(yourMovieImage);
-    
+    this.getMovies = this.getMovies.bind(this);    
   }
 
-  // componentDidMount() {
-    
-  //   axios({
-  //     url: `https://api.themoviedb.org/3/movie/latest`,
-  //     params: {
-  //       api_key: `c46c55f29f4061c8020736981b14a86e`,
-  //       language: `en-US`,
-  //       include_adult: `false`,
-     
-  //     }
-  //   })
-  //     .then((data) => {
-  //       console.log(data)
-  //       this.setState({
-  //         movies: data.results
-  //       });
-  //     });
-  // } 
-
-
-
+  
+  //Set search = user input
   handleChange(e) {
-    // console.log(e.target.value);
-    console.log(this.state.search);
-    
+    // console.log(this.state.search);
     this.setState({
       search : e.target.value
     }) 
   }
 
-  
-
-
-
-
-  
   getMovies(e) {
     e.preventDefault();
-
+    //API call for seach movies
     axios.get('https://api.themoviedb.org/3/search/movie', {
       params: {
-        // api_key: `c46c55f29f4061c8020736981b14a86e`,
         api_key: this.state.apiKey,
         query: this.state.search,
         include_adult: `false`,
@@ -79,6 +45,7 @@ class App extends React.Component {
 
       .then((data) => {
         const returnedData = data.data.results;
+        //Limit result shown to first item from returnedData
         const limitedData = returnedData[0];
         
         this.setState({
@@ -87,56 +54,37 @@ class App extends React.Component {
           showResults: true
         });
         
-        console.log(data);
       
-
+        //API call to get movie credit info
         return axios.get(`https://api.themoviedb.org/3/movie/${this.state.id}/credits`, {
             params: {
               api_key: this.state.apiKey,
-              // movie_id: this.state.id,
             }
           })
           
           .then((creditData) => {
-            // console.log(creditData);
             const returnedCast = creditData.data.cast;
-            
-            // console.log(returnedCast);
-
             const limitedCast = returnedCast.slice(0, 4);
-            // console.log(limitedCast);
             
-
-
             this.setState({
               cast: limitedCast
-              
             });
             
+            //API call to get movie info/stats
             return axios.get(`https://api.themoviedb.org/3/movie/${this.state.id}`, {
               params: {
                 api_key: this.state.apiKey,
-                // movie_id: this.state.id,
               }
             })
-
-            
             
             .then((movieInfo) => {
-              console.log(movieInfo);
-
               const returnedInfo = movieInfo.data;
 
               this.setState({
                 movieInfo: returnedInfo
               });
-
-              
             })
-            
           });
-        
-        
       });
   }
 
@@ -150,7 +98,7 @@ class App extends React.Component {
           url("https://image.tmdb.org/t/p/original/${this.state.yourMovie.backdrop_path}")`
           }}>
 
-
+          {/* Home Page */}
           {this.state.showResults === false ? (
           <div className="homePage">
             <img src="../../assets/logo2.png" alt="" className="homeLogo" />
@@ -163,72 +111,67 @@ class App extends React.Component {
 
 
           
-
+          {/* Results Page */}
           {this.state.showResults === true ? (
           <div>
-          <header>
-            <img src="../../assets/logo2.png" alt=""/>
-            <form action="" onSubmit={this.getMovies} id="resultPageForm">
-              {/* last item in value is set = to name */}
-              <input type="text" name="search" id="resultSearch" onChange={this.handleChange} placeholder="Search Movie" value={this.state.search} />
-              <input type="submit" value="Search" id="resultSubmit" />
-            </form>
-          </header>
-          <div className="searchResultsContainer">
-          <div className="searchResults">
+            <header>
+              <img src="../../assets/logo2.png" alt=""/>
+              <form action="" onSubmit={this.getMovies} id="resultPageForm">
+                {/* last item in value is set = to name */}
+                <input type="text" name="search" id="resultSearch" onChange={this.handleChange} placeholder="Search Movie" value={this.state.search} />
+                <input type="submit" value="Search" id="resultSubmit" />
+              </form>
+            </header>
+            <div className="searchResultsContainer">
+              <div className="searchResults">
 
-              <div className="resultImage">
-                <img src={`https://image.tmdb.org/t/p/w500/${this.state.yourMovie.poster_path}`} alt=""/>
-              </div>
-
-              <div className="movieDetails">
-                <div className="titleBlurb">
-                  <h2 className="movieTitle">{this.state.yourMovie.title}</h2>
-                  <h3 className="tagline">{this.state.movieInfo.tagline}</h3>
-                  <p>{this.state.yourMovie.overview}</p>
+                {/* Movie Poster */}
+                <div className="resultImage">
+                  <img src={`https://image.tmdb.org/t/p/w500/${this.state.yourMovie.poster_path}`} alt=""/>
                 </div>
 
-                <div className="movieStats">
-                  <div className="rating">
-                  <h6>Rating:</h6>
-                  <p>{this.state.movieInfo.vote_average} / 10</p>
+                {/* Title-Tagline-Overview */}
+                <div className="movieDetails">
+                  <div className="titleBlurb">
+                    <h2 className="movieTitle">{this.state.yourMovie.title}</h2>
+                    <h3 className="tagline">{this.state.movieInfo.tagline}</h3>
+                    <p>{this.state.yourMovie.overview}</p>
                   </div>
 
-                  <div className="runtime">
-                  <h6>Running Time:</h6>
-                  <p>{this.state.movieInfo.runtime} mins</p>
-                  </div>
-
-                  <div className="releaseDate">
-                  <h6>Release Date:</h6>
-                  <p>{this.state.movieInfo.release_date}</p>
-                  </div>
-                </div>
-            
-
-
-                <div className="cast">
-                {this.state.cast.map((actor, i) => {
-                  return(
-                    <div key={i} className="actorProfile">
-                      <img src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`} alt="" />
-                      <p className="actorName">{actor.name}</p>
-                      <p className="actorCharacter">{actor.character}</p>
+                  {/* Movie Stats */}
+                  <div className="movieStats">
+                    <div className="rating">
+                    <h6>Rating:</h6>
+                    <p>{this.state.movieInfo.vote_average} / 10</p>
                     </div>
-                  )
-                })}
 
+                    <div className="runtime">
+                    <h6>Running Time:</h6>
+                    <p>{this.state.movieInfo.runtime} mins</p>
+                    </div>
+
+                    <div className="releaseDate">
+                    <h6>Release Date:</h6>
+                    <p>{this.state.movieInfo.release_date}</p>
+                    </div>
+                  </div>
+
+                  {/* Cast */}
+                  <div className="cast">
+                  {this.state.cast.map((actor, i) => {
+                    return(
+                      <div key={i} className="actorProfile">
+                        <img src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`} alt="" />
+                        <p className="actorName">{actor.name}</p>
+                        <p className="actorCharacter">{actor.character}</p>
+                      </div>
+                    )
+                  })}
+                  </div>
                 </div>
-
               </div>
-
-
-
-          
-          </div>
-          </div>
-          </div>
-
+            </div>
+          </div> 
           ) : null}
 
           {this.state.showResults === false ? (
@@ -240,7 +183,7 @@ class App extends React.Component {
           </footer>
           ) : null}
           
-        </div>
+        </div> 
 
         
       )
