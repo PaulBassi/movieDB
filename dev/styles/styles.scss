@@ -1,5 +1,5 @@
 @import 'setup.scss';
-@import 'typography.scss';
+@import 'components/typography.scss';
 
 
 #app {
@@ -26,6 +26,7 @@ img.homeLogo {
     top: 85%;
     input#homeSearch {
         border: 3px solid $yellow;
+        color: $white;
         background: none;
 
         width: 380px;
@@ -331,6 +332,12 @@ footer {
     }
 
     .cast {
+        // display: none;
+    }
+}
+
+@media only screen and (max-width: 1275px) {
+    .cast {
         display: none;
     }
 }
@@ -352,6 +359,7 @@ footer {
         height: 10vh;
         img {
             margin-bottom: 2%;
+            width: 20%;
         }
     }
 
