@@ -343,20 +343,12 @@ footer {
 }
 
 @media only screen and (max-width: 900px) {
-    h2 {
-        @include remCalc(34);
-        line-height: 3rem;
-    }
-
-    h3 {
-        @include remCalc(18);
-        margin: 0;
-    }
-
     header {
-        flex-direction: column;
-        align-items: center;
-        height: 10vh;
+        justify-content: space-around;
+        width: 100%;
+        // flex-direction: column;
+        // align-items: center;
+        // height: 15vh;
         img {
             margin-bottom: 2%;
             width: 20%;
@@ -364,25 +356,17 @@ footer {
     }
 
     #resultPageForm {
-        width: 90%;
+        width: 78%;
         display: flex;
         justify-content: center;
+        margin-left: 2%;
         input#resultSearch {
-            border: 1px solid $yellow;
-            background: none;
-            color: $white;
-
-            width: 200px;
-            margin-right: 1%;
-            padding: 6px;
-            text-align: center;
+            @include remCalc(14);
         }
         input#resultSubmit {
-            border: 1px solid $green;
-            background: $green;
-            color: $white;
-            width: 80px;
-            padding: 6px 10px;
+
+            @include remCalc(14);
+            
         }
     }
 
