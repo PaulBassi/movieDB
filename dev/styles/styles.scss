@@ -206,7 +206,7 @@ footer {
         color: $white;
     }
     .footerImage {
-        width: 2%;
+        width: 20px;
     }
     img {
         width: 100%;
@@ -245,7 +245,7 @@ footer {
 
     img.homeLogo {
     display: block;
-    width: 30%;
+    width: 300px;
     margin: 0 auto;
     }
 
@@ -346,9 +346,7 @@ footer {
     header {
         justify-content: space-around;
         width: 100%;
-        // flex-direction: column;
-        // align-items: center;
-        // height: 15vh;
+        align-items: center;
         img {
             margin-bottom: 2%;
             width: 20%;
@@ -397,6 +395,18 @@ footer {
                 width: 100%;
                 display: block;
             }
+        }
+    }
+
+    .titleBlurb {
+        h2 {
+            @include remCalc(36);
+        }
+        h3 {
+            @include remCalc(18);
+        }
+        p {
+            @include remCalc(15);
         }
     }
 

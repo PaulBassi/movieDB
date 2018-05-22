@@ -178,7 +178,7 @@ class App extends React.Component {
           <footer>
             <p>Developed by Paul Bassi</p>
             <div className="footerImage">
-            <img src="../../assets/moviedb2.png" alt=""/>
+            <img src="../..assets/moviedb2.png" alt=""/>
             </div>
           </footer>
           ) : null}
