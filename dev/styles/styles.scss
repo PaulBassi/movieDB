@@ -3,7 +3,7 @@
 
 
 #app {
-    background: url(../../assets/AdobeStock_179914171-4.png);
+    background: url(./../assets/AdobeStock_179914171-4.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -25,9 +25,9 @@ img.homeLogo {
     position: absolute;
     top: 85%;
     input#homeSearch {
-        border: 3px solid $yellow;
+        border: 3px solid $orange;
         color: $white;
-        background: none;
+        background: $orange;
 
         width: 380px;
         margin-right: 2%;
@@ -190,7 +190,7 @@ header {
 footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background: rgba(000, 000, 000, 0.5);
     position: absolute;
     bottom: 0;
@@ -201,16 +201,17 @@ footer {
 
     font-family: $secondaryFont;
     @include remCalc(18);
-    p {
-        margin: 0;
-        color: $white;
+    img.pbassiLogo {
+        width: 30px;
     }
-    .footerImage {
+    img.movieDBLogo {
         width: 20px;
     }
-    img {
-        width: 100%;
+    p {
+        color: $white;
+        margin: 0 20px;
     }
+
 }
 
 
@@ -238,7 +239,7 @@ footer {
 
 @media only screen and (max-width: 1200px) {
     #app {
-        background: linear-gradient(to bottom, rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(../../assets/background2.jpeg);
+        background: linear-gradient(to bottom, rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(./../assets/background2.jpeg);
         background-size: cover;
         background-position: center;
     }

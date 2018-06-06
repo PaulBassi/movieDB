@@ -101,7 +101,7 @@ class App extends React.Component {
           {/* Home Page */}
           {this.state.showResults === false ? (
           <div className="homePage">
-            <img src="../../assets/logo2.png" alt="" className="homeLogo" />
+            <img src="./public/assets/logo2.png" alt="" className="homeLogo" />
             <form action="" onSubmit={this.getMovies} id="homePageForm">
                 <input type="text" name="search" id="homeSearch" onChange={this.handleChange} placeholder="Search Movie" value={this.state.search} /><input type="submit" value="Search" id="homeSubmit" />
               </form>
@@ -115,7 +115,7 @@ class App extends React.Component {
           {this.state.showResults === true ? (
           <div>
             <header>
-              <img src="../../assets/logo2.png" alt=""/>
+              <img src="./public/assets/logo2.png" alt=""/>
               <form action="" onSubmit={this.getMovies} id="resultPageForm">
                 {/* last item in value is set = to name */}
                 <input type="text" name="search" id="resultSearch" onChange={this.handleChange} placeholder="Search Movie" value={this.state.search} />
@@ -176,10 +176,13 @@ class App extends React.Component {
 
           {this.state.showResults === false ? (
           <footer>
-            <p>Developed by Paul Bassi</p>
-            <div className="footerImage">
-            <img src="../../assets/moviedb.png" alt=""/>
-            </div>
+            {/* <div className="footerLeft"> */}
+            <img className="pbassiLogo" src="./public/assets/faviconGrey.png" alt=""/>
+            <p>Paul Bassi &copy; 2018</p>
+            {/* </div> */}
+            {/* <div className="footerRight"> */}
+            <img className="movieDBLogo" src="./public/assets/moviedb2.png" alt=""/>
+            {/* </div> */}
           </footer>
           ) : null}
           
